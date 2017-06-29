@@ -9,6 +9,8 @@ import { StarComponent } from './star/star.component';
 import {ProductService} from "./product-list/product.service";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -16,10 +18,17 @@ import {HttpModule} from "@angular/http";
     ProductListComponent,
     HomeComponent,
     ProductFilterPipe,
-    StarComponent
+    StarComponent,
+    ProductDetailComponent
   ],
   imports: [
-    BrowserModule, FormsModule, HttpModule
+    BrowserModule, FormsModule, HttpModule, RouterModule.forRoot([
+      {path: 'products', component: ProductListComponent},
+      {path: 'product/:id', component: ProductDetailComponent},
+      {path: 'home', component: HomeComponent},
+      {path: '', redirectTo: 'home', pathMatch:'full'},
+      {path:'**', redirectTo:'home', pathMatch:'full'}
+    ])
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
