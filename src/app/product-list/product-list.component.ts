@@ -10,7 +10,7 @@ import {ProductService} from "./product.service";
 export class ProductListComponent implements OnInit {
 
   pageTitle = 'Product List';
-  imageWidth:  50;
+  imageWidth:  25;
   imageMargin: 2;
   showImage = false;
   listFilter: string;
@@ -20,7 +20,10 @@ export class ProductListComponent implements OnInit {
   constructor(private _productService: ProductService) { }
 
   ngOnInit() {
-    this.products = this._productService.getProducts();
+    this._productService.getProducts().subscribe(
+      products => this.products = products,
+      error => this.errorMessage = <any> error);
+
   }
 
   toggleImage(): void {
