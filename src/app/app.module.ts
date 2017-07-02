@@ -11,6 +11,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import {RouterModule} from "@angular/router";
+import {ProductDetailGuard} from "./product-detail/product-detail.guard";
 
 @NgModule({
   declarations: [
@@ -24,13 +25,15 @@ import {RouterModule} from "@angular/router";
   imports: [
     BrowserModule, FormsModule, HttpModule, RouterModule.forRoot([
       {path: 'products', component: ProductListComponent},
-      {path: 'product/:id', component: ProductDetailComponent},
+      {path: 'product/:id',
+        canActivate: [ProductDetailGuard],
+        component: ProductDetailComponent},
       {path: 'home', component: HomeComponent},
       {path: '', redirectTo: 'home', pathMatch:'full'},
       {path:'**', redirectTo:'home', pathMatch:'full'}
     ])
   ],
-  providers: [ProductService],
+  providers: [ProductService, ProductDetailGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

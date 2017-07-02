@@ -24,7 +24,7 @@
     <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
 
     <div class='table-bordered'>
-      <table class='table table-responsive'
+      <table class='table table-condensed'
              *ngIf='products && products.length'>
         <thead>
         <tr>
@@ -51,11 +51,14 @@
                  [style.height.px]='imageWidth'
                  [style.margin.px]='imageMargin'>
           </td>
-          <td>{{product.productName}}</td>
+          <td> <a [routerLink]="['/product',product.productId]">
+            {{product.productName}}
+          </a>
+          </td>
           <td>{{ product.productCode | lowercase }}</td>
           <td>{{ product.releaseDate }}</td>
           <td>{{ product.price | currency:'USD':true:'1.2-2' }}</td>
-          <td>
+          <td >
             <app-star [rating]='product.starRating'
                      (ratingClicked)='onRatingClicked($event)'>
             </app-star>
