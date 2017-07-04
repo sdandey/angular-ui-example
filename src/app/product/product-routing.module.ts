@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import {RouterModule } from '@angular/router';
-import {ProductListComponent} from "../product-list/product-list.component";
-import {ProductDetailGuard} from "../product-detail/product-detail.guard";
-import {ProductDetailComponent} from "../product-detail/product-detail.component";
+import {ProductListComponent} from "./product-list.component";
+import {ProductDetailGuard} from "./product-detail.guard";
+import {ProductDetailComponent} from "./product-detail.component";
 
 
 @NgModule({
