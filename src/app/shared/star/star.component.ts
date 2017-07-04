@@ -2,8 +2,8 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 
 @Component({
   selector: 'app-star',
-  templateUrl: './star.component.html',
-  styleUrls: ['./star.component.css']
+  templateUrl: 'star.component.html',
+  styleUrls: ['star.component.css']
 })
 export class StarComponent implements OnChanges {
 
